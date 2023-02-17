@@ -97,6 +97,10 @@
   font-size: 42px;
   line-height: 1.14;
   letter-spacing: 0.5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 294px;
 }
 
 @media (max-width: 500px) {
@@ -116,6 +120,10 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
 }
 
 @media (max-width: 780px) {
@@ -144,6 +152,10 @@
   margin-right: auto;
   margin-top: 37px;
   cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 780px) {
@@ -181,6 +193,10 @@
   margin-top: 35px;
   margin-left: auto;
   cursor: pointer;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 780px) {
@@ -274,6 +290,10 @@
   cursor: pointer;
 }
 
+.element__like-button:hover {
+  opacity: 0.5;
+}
+
 .footer {
   margin-top: 68px;
   margin-bottom: 60px;
@@ -319,7 +339,6 @@
   background-color: rgba(0, 0, 0, .5);
   width: 100%;
   height: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
   display: none;
@@ -342,10 +361,17 @@
 }
 
 .popup__close-button {
+  padding: 0;
+  background-color: rgba(0, 0, 0, .5);
+  border: 0;
   position: absolute;
   top: calc(((100vh - 330px) / 2) - 40px);
   right: calc(((100vw - 430px) / 2) - 40px);
   cursor: pointer;
+}
+
+.popup__close-button:hover {
+  opacity: .6;
 }
 
 @media (max-width: 620px) {
@@ -362,6 +388,11 @@
     top: calc(((100vh - 322px) / 2) - 36px);
     right: calc((100vw - 282px) / 2);
   }
+}
+
+.popup__container-form {
+  max-width: 330px;
+  margin-left: calc((430px - 358px) / 2);
 }
 
 .popup__container-title {
@@ -392,17 +423,20 @@
   }
 }
 
-.popup__container-name {
+.popup__input {
   width: 358px;
   height: 27px;
   padding: 0;
   border: 0;
-  margin: 45px auto 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
+}
+
+.popup__input_type_name {
+  margin: 45px auto 0;
 }
 
 @media (max-width: 620px) {
@@ -417,17 +451,8 @@
   }
 }
 
-.popup__container-job{
-  padding: 0;
-  border: 0;
-  width: 358px;
-  height: 27px;
+.popup__input_type_job {
   margin: 30px auto 0;
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
-  font-family: 'Inter';
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.21;
 }
 
 @media (max-width: 620px) {
@@ -474,4 +499,8 @@
     margin-top: 45px;
     margin-bottom: 25px;
   }
+}
+
+.popup_opened {
+  display: flex;
 }
