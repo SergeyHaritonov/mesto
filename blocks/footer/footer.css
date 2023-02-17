@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 68px;
+  margin-bottom: 60px;
+  margin-left: calc((100% - 880px) / 2);
+}
+
+@media (max-width: 930px) {
+  .footer {
+    margin-left: calc((100% - 581px) / 2);
+  }
+}
+
+@media (max-width: 620px) {
+  .footer {
+    margin-top: 48px;
+    margin-bottom: 36px;
+    margin-left: calc((100% - 282px) / 2);
+  }
+}
