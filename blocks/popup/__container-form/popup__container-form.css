@@ -3,7 +3,7 @@
   margin-left: calc((430px - 358px) / 2);
 }
 
-@media (max-width: 320px) {
+@media (max-width: 620px) {
   .popup__container-form {
     margin-left: calc((282px - 238px) / 2);
   }

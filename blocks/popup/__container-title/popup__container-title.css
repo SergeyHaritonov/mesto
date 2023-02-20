@@ -2,7 +2,7 @@
   max-width: 330px;
   margin-top: 34px;
   margin-left: calc((430px - 358px) / 2);
-  margin-bottom: 0;
+  margin-bottom: 54px;
   font-weight: 900;
   font-size: 24px;
   line-height: 1.21;
@@ -10,16 +10,15 @@
 
 @media (max-width: 620px) {
   .popup__container-title {
-    margin-left: calc((430px - 358px) / 2);
-    font-weight: 900;
+    margin-left: calc((282px - 238px) / 2);
     font-size: 18px;
     line-height: 1.22;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 370px) {
   .popup__container-title {
-    margin-left: calc((282px - 238px) / 2);
     margin-top: 25px;
+    margin-bottom: 72px;
   }
 }
