@@ -29,6 +29,5 @@
   .popup__close-button {
     top: calc(((100vh - 322px) / 2) - 36px);
     right: calc((100vw - 282px) / 2);
-    background-size: contain;
   }
 }
