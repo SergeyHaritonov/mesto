@@ -1,18 +1,20 @@
-let profileEditButton = document.querySelector('.profile__edit-button');
+const template = document.querySelector('.cardTemplate').content;
 
-let popUp = document.querySelector('.popup');
+const profileEditButton = document.querySelector('.profile__edit-button');
 
-let popupCloseButton = document.querySelector('.popup__close-button');
+const popupEditProfile = document.querySelector('.popup_type_editProfile');
 
-let userNameElement = document.querySelector('.profile__title');
+const popupCloseButtonEditProfile = document.querySelector('.popup__close-button_type_editProfile');
 
-let userJobElement = document.querySelector('.profile__subtitle');
+const userNameElement = document.querySelector('.profile__title');
 
-let formElement = document.querySelector('.popup__container-form');
+const userJobElement = document.querySelector('.profile__subtitle');
 
-let nameInput = document.querySelector('.popup__input_type_name');
+const editProfileFormElement = document.querySelector('.popup__container-form_editProfile');
 
-let jobInput = document.querySelector('.popup__input_type_job');
+const ProfileEditNameInput = document.querySelector('.popup__input_type_name');
+
+const ProfileEditJobInput = document.querySelector('.popup__input_type_job');
 
 const elementsSection = document.querySelector('.elements');
 
@@ -24,17 +26,17 @@ const popupFullImage = document.querySelector('.popup_type_fullImage')
 
 const popupCloseButtonFullImage = document.querySelector('.popup__close-button_type_fullImage');
 
-const addCardNameInput = document.querySelector('.popup__input_type_place');
+const CardAddNameInput = document.querySelector('.popup__input_type_place');
 
-const addCardLinkInput = document.querySelector('.popup__input_type_url');
+const CardAddLinkInput = document.querySelector('.popup__input_type_url');
 
 const handleAddUserCardSubmit = document.querySelector('.popup__container-form_type_addCard');
 
-let popupCloseButtonAddCard = document.querySelector('.popup__close-button_type_addCard');
+const popupCloseButtonAddCard = document.querySelector('.popup__close-button_type_addCard');
 
-let profileAddButton = document.querySelector('.profile__add-button');
+const profileAddButton = document.querySelector('.profile__add-button');
 
-let popUpAddCard = document.querySelector('.popup_type_addCard');
+const popUpAddCard = document.querySelector('.popup_type_addCard');
 
 const initialCards = [
   {
@@ -63,30 +65,29 @@ const initialCards = [
   }
 ];
 
-
-function openPopup () {
-  popUp.classList.add('popup_opened');
-  nameInput.value = userNameElement.textContent;
-  jobInput.value = userJobElement.textContent;
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
-function closePopup () {
-  popUp.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
-function closePopup () {
-  popUp.classList.remove('popup_opened');
+function handleProfileEditButtonClick() {
+  openPopup(popupEditProfile);
+  ProfileEditNameInput.value = userNameElement.textContent;
+  ProfileEditJobInput.value = userJobElement.textContent;
 }
 
-function handleFormSubmit (evt) {
+function handleEditProfileFormSubmit (evt) {
     evt.preventDefault(); 
-    userNameElement.textContent = nameInput.value;
-    userJobElement.textContent = jobInput.value;
-    closePopup();
+    userNameElement.textContent = ProfileEditNameInput.value;
+    userJobElement.textContent = ProfileEditJobInput.value;
+    closePopup(popupEditProfile);
 }
 
 function createCard(card) {
-  const newCard = document.querySelector('.cardTemplate').content.cloneNode(true);
+  const newCard = template.cloneNode(true);
   const cardTitle = newCard.querySelector('.element__title');
   cardTitle.textContent = card.name;
   const cardImage = newCard.querySelector('.element__image');
@@ -100,7 +101,7 @@ function createCard(card) {
     fullImage.setAttribute('src', card.link);
     fullImage.setAttribute('alt', `Фотография, на которой ${card.name}`);
     fullImageFigcaption.textContent = card.name;
-    openPopupFullImage();
+    openPopup(popupFullImage);
   });
   return newCard;
 }
@@ -114,18 +115,10 @@ initialCards.forEach(renderCard);
 function handleAddUserCard(evt) {
   evt.preventDefault();
   (renderCard({
-    name: addCardNameInput.value,
-    link: addCardLinkInput.value
+    name: CardAddNameInput.value,
+    link: CardAddLinkInput.value
   }));
-  closePopupAddCard();
-}
-
-function openPopupFullImage () {
-  popupFullImage.classList.add('popup_opened');
-}
-
-function closePopupFullImage () {
-  popupFullImage.classList.remove('popup_opened');
+  closePopup(popUpAddCard);
 }
 
 function handleDeleteButtonClick(evt) {
@@ -136,27 +129,27 @@ function handleLikeButtonClick(evt) {
   evt.target.classList.toggle('element__like-button_active');
 }
 
-function openPopupAddCard () {
-  addCardNameInput.value = '';
-  addCardLinkInput.value = '';
-  popUpAddCard.classList.add('popup_opened');
+function handleProfileAddButton() {
+  handleAddUserCardSubmit.reset();
+  openPopup(popUpAddCard);
 }
 
-function closePopupAddCard () {
-  popUpAddCard.classList.remove('popup_opened');
-}
+profileAddButton.addEventListener('click', handleProfileAddButton);
 
+popupCloseButtonAddCard.addEventListener('click', function() {
+  closePopup(popUpAddCard);
+});
 
-profileAddButton.addEventListener('click', openPopupAddCard);
+editProfileFormElement.addEventListener('submit', handleEditProfileFormSubmit);
 
-popupCloseButtonAddCard.addEventListener('click', closePopupAddCard);
+profileEditButton.addEventListener('click', handleProfileEditButtonClick);
 
-formElement.addEventListener('submit', handleFormSubmit);
-
-profileEditButton.addEventListener('click', openPopup);
-
-popupCloseButton.addEventListener('click', closePopup);
+popupCloseButtonEditProfile.addEventListener('click', function() {
+  closePopup(popupEditProfile);
+});
 
 handleAddUserCardSubmit.addEventListener('submit', handleAddUserCard);
 
-popupCloseButtonFullImage.addEventListener('click', closePopupFullImage);
+popupCloseButtonFullImage.addEventListener('click', function() {
+  closePopup(popupFullImage);
+});
