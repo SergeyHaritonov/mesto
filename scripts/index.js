@@ -10,11 +10,11 @@ const userNameElement = document.querySelector('.profile__title');
 
 const userJobElement = document.querySelector('.profile__subtitle');
 
-const editProfileFormElement = document.querySelector('.popup__container-form_editProfile');
+const profileEditFormElement = document.querySelector('.popup__container-form_editProfile');
 
-const ProfileEditNameInput = document.querySelector('.popup__input_type_name');
+const profileEditNameInput = document.querySelector('.popup__input_type_name');
 
-const ProfileEditJobInput = document.querySelector('.popup__input_type_job');
+const profileEditJobInput = document.querySelector('.popup__input_type_job');
 
 const elementsSection = document.querySelector('.elements');
 
@@ -26,9 +26,9 @@ const popupFullImage = document.querySelector('.popup_type_fullImage')
 
 const popupCloseButtonFullImage = document.querySelector('.popup__close-button_type_fullImage');
 
-const CardAddNameInput = document.querySelector('.popup__input_type_place');
+const cardAddNameInput = document.querySelector('.popup__input_type_place');
 
-const CardAddLinkInput = document.querySelector('.popup__input_type_url');
+const cardAddLinkInput = document.querySelector('.popup__input_type_url');
 
 const handleAddUserCardSubmit = document.querySelector('.popup__container-form_type_addCard');
 
@@ -75,14 +75,14 @@ function closePopup(popup) {
 
 function handleProfileEditButtonClick() {
   openPopup(popupEditProfile);
-  ProfileEditNameInput.value = userNameElement.textContent;
-  ProfileEditJobInput.value = userJobElement.textContent;
+  profileEditNameInput.value = userNameElement.textContent;
+  profileEditJobInput.value = userJobElement.textContent;
 }
 
 function handleEditProfileFormSubmit (evt) {
     evt.preventDefault(); 
-    userNameElement.textContent = ProfileEditNameInput.value;
-    userJobElement.textContent = ProfileEditJobInput.value;
+    userNameElement.textContent = profileEditNameInput.value;
+    userJobElement.textContent = profileEditJobInput.value;
     closePopup(popupEditProfile);
 }
 
@@ -115,8 +115,8 @@ initialCards.forEach(renderCard);
 function handleAddUserCard(evt) {
   evt.preventDefault();
   (renderCard({
-    name: CardAddNameInput.value,
-    link: CardAddLinkInput.value
+    name: cardAddNameInput.value,
+    link: cardAddLinkInput.value
   }));
   closePopup(popUpAddCard);
 }
@@ -140,7 +140,7 @@ popupCloseButtonAddCard.addEventListener('click', function() {
   closePopup(popUpAddCard);
 });
 
-editProfileFormElement.addEventListener('submit', handleEditProfileFormSubmit);
+profileEditFormElement.addEventListener('submit', handleEditProfileFormSubmit);
 
 profileEditButton.addEventListener('click', handleProfileEditButtonClick);
 
